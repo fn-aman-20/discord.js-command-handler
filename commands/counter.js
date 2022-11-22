@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders'),
 { ChannelType } = require('discord.js');
 
+
 module.exports = new SlashCommandBuilder()
 .setName('counter')
 .setDescription('configure counter settings')
