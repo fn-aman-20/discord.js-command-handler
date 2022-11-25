@@ -64,4 +64,4 @@ require('fs').readdirSync('./events').filter(f => f.endsWith('.js')).forEach(e =
   client.on(`${event}`, task.bind(null, client));
 });
 
-// client.config.onboot(client, client.config.auth);
+client.config.onboot(client, client.config.auth);
