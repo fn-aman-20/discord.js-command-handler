@@ -10,6 +10,7 @@ const {
 } = require('discord.js');
 
 const client = new Client({
+  // uses all intents, restrict if you want to
   intents: Object.values(GatewayIntentBits)
     .filter(perm => typeof perm === 'number'),
   shards: 'auto',
