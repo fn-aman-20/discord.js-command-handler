@@ -18,28 +18,14 @@ const client = new Client({
   // https://discord.js.org/#/docs/discord.js/main/typedef/ClientOptions
   // https://discord.js.org/#/docs/discord.js/main/class/Options?scrollTo=s-cacheWithLimits
   makeCache: Options.cacheWithLimits({
-    GuildBanManager: 5,
-    GuildEmojiManager: 10,
     GuildForumThreadManager: 1,
-    GuildInviteManager: 5,
     GuildMemberManager: {
       maxSize: 10,
       keepOverLimit: member => member.id === client.user.id
     },
-    GuildScheduledEventManager: 1,
-    GuildStickerManager: 5,
     GuildTextThreadManager: 1,
-    BaseGuildEmojiManager: 10,
-    UserManager: 0,
-    ThreadManager: 0,
-    MessageManager: 0,
-    PresenceManager: 0,
-    VoiceStateManager: 0,
-    ThreadMemberManager: 0,
-    ReactionUserManager: 0,
-    ReactionManager: 0,
-    StageInstanceManager: 0,
-    ApplicationCommandManager: 0
+    ThreadManager: 5, // switch to 10 if doesn't work
+    ThreadMemberManager: 0 // set to 5 or 10 if you need members of this thread to be cached
   }),
   presence: {
     status: 'idle',
