@@ -38,7 +38,7 @@ const client = new Client({
   }
 });
 
-// remove line 54 - 57 if you didn't use the makeCache prop in client
+// remove line 41 - 44 if you didn't use the makeCache prop in client
 delete client.sweepers.options;
 clearInterval(client.sweepers.intervals.threads);
 client.sweepers.intervals.threads = null;
