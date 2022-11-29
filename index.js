@@ -1,6 +1,6 @@
-/* const host = require('express')();
+const host = require('express')();
 host.get('/', (req, res) => res.send('Thank you for the ping!'));
-host.listen(2022); tranform this comment into code if you are using replit and are going to ping it */
+host.listen(2022); // remove this portion if you don't use replit
 
 const {
   Client,
