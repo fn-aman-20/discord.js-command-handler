@@ -10,7 +10,7 @@ const {
 } = require('discord.js');
 
 const client = new Client({
-  // uses all intents, restrict if you want to
+  /* uses all intents, restricting these to few intents is highly recommended so as to consume less memory */
   intents: Object.values(GatewayIntentBits)
     .filter(perm => typeof perm === 'number'),
   shards: 'auto',
@@ -40,10 +40,6 @@ const client = new Client({
   }
 });
 
-// remove line 43 - 46 if you didn't use the makeCache prop in client
-delete client.sweepers.options;
-clearInterval(client.sweepers.intervals.threads);
-client.sweepers.intervals.threads = null;
 client.config = require('./util/config');
 client.db = require('croxydb');
 client.db.setReadable(true);
