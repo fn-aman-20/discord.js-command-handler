@@ -27,7 +27,7 @@ module.exports = async (client, i) => {
         return await i.editReply({
           content: `✅ You shall start with ${count + 1} in ${channel.name}`
         });
-}
+      }
       else if (!count) {
         if (!data[channel.id]) {
           data[channel.id] = 0;
@@ -42,7 +42,7 @@ module.exports = async (client, i) => {
             content: `✅ No one can count in ${channel.name} anymore`
           });
         }
-}
+      }
     }
   }
 }
