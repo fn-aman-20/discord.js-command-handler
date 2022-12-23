@@ -1,7 +1,5 @@
-const { PermissionsBitField } = require('discord.js');
-
 module.exports = async (client, i) => {
-  if (i.user.id !== '858551569263755284' && !i.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await i.reply({
+  if (!i.member.permissions.toArray().includes('Administrator')) return await i.reply({
     content: `Sorry, I agree with Admins for my configuration.`
   });
   if (i.isCommand()) {
