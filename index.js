@@ -1,6 +1,6 @@
 const host = require('express')();
 host.get('/', (req, res) => res.send('Thank you for the ping!'));
-host.listen(2022); // remove this portion if you don't use replit
+host.listen(2022);
 
 const {
   Client,
@@ -10,7 +10,7 @@ const {
 } = require('discord.js');
 
 const client = new Client({
-  /* uses all intents, restricting these to few intents is highly recommended so as to consume less memory */
+  /* uses all intents, restricting these to few is highly recommended so as to consume less memory */
   intents: Object.values(GatewayIntentBits)
     .filter(perm => typeof perm === 'number'),
   shards: 'auto',
@@ -27,7 +27,7 @@ const client = new Client({
     },
     GuildTextThreadManager: 1,
     ThreadManager: 5, // switch to 10 if the manager doesn't work
-    ThreadMemberManager: 0 // set to 5 or 10 if you want thread members to be cached
+    ThreadMemberManager: 0 // set to 10 if you want thread members to be cached
   }),
   presence: {
     status: 'idle',
@@ -39,6 +39,12 @@ const client = new Client({
     }]
   }
 });
+
+/* this is something experimental try out if you want
+delete client.sweepers.options;
+clearInterval(client.sweepers.intervals.threads);
+client.sweepers.intervals.threads = null;
+*/
 
 client.config = require('./util/config');
 client.db = require('croxydb');
