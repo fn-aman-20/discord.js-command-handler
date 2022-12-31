@@ -1,10 +1,6 @@
-const commands = [], fs = require('fs');
-
-fs.readdirSync('./commands').forEach(c => {
-  let command = require(`../commands/${c}`).toJSON();
-  commands.push(command);
-});
-
 module.exports = async (client) => {
+  const commands = [];
+  client.commands.each(command => commands.push(command.data.toJSON()));
   await client.application.commands.set(commands);
+  
 }
