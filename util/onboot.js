@@ -13,6 +13,7 @@ time = () => {
 };
 
 // Do this only if you know about it
+// Also read https://github.com/fn-aman-20/discord-anticrash#readme
 /*
 process.on('exit', () => {
   spawn(process.argv.shift(), process.argv, {
