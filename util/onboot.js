@@ -54,7 +54,7 @@ module.exports = function onboot(client, token) {
     setTimeout(() => {
       if (!client.isReady()) process.exit(1);
       else check.emit('login');
-    }, 10_000);
+    }, 60_000); // few vps have a auto reboot cooldown of 60s
   });
   check.emit('login');
   
