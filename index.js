@@ -5,9 +5,11 @@ host.listen(2022);
 const {
   Client,
   Options,
+  Collection,
   ActivityType,
   GatewayIntentBits
-} = require('discord.js');
+} = require('discord.js'),
+fs = require('fs');
 
 const client = new Client({
   /* uses all intents, restricting these to few is highly recommended so as to consume less memory */
@@ -47,10 +49,16 @@ client.sweepers.intervals.threads = null;
 */
 
 client.config = require('./util/config');
+client.commands = new Collection();
 client.db = require('croxydb');
 client.db.setReadable(true);
 
-require('fs').readdirSync('./events').filter(f => f.endsWith('.js')).forEach(e => {
+fs.readdirSync('./commands').filter(f => f.endsWith('.js')).forEach(c => {
+  const command = require(`./commands/${c}`);
+  client.commands.set(command.name, command);
+});
+
+fs.readdirSync('./events').filter(f => f.endsWith('.js')).forEach(e => {
   let event = e.split('.')[0], task = require(`./events/${e}`);
   client.on(`${event}`, task.bind(null, client));
 });
