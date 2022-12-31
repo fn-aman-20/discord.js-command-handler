@@ -1,7 +1,7 @@
 require('colors').enable();
 const process = require('process'),
 { EventEmitter } = require('events'),
-{ spawn } = require('child_process'),
+// { exec, spawn } = require('child_process'),
 check = new EventEmitter(),
 time = () => {
   const a = new Date(),
@@ -13,7 +13,7 @@ time = () => {
 };
 
 // Do this only if you know about it
-// Also read https://github.com/fn-aman-20/discord-anticrash#readme
+// if you use replit, consider using exec('kill 1') and freshping.io instead
 /*
 process.on('exit', () => {
   spawn(process.argv.shift(), process.argv, {
@@ -54,7 +54,7 @@ module.exports = function onboot(client, token) {
     setTimeout(() => {
       if (!client.isReady()) process.exit(1);
       else check.emit('login');
-    }, 60_000); // few vps have a auto reboot cooldown of 60s
+    }, 60_000); // few vps have a auto-boot cooldown of 60s after crashing
   });
   check.emit('login');
   
