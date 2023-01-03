@@ -22,13 +22,14 @@ const client = new Client({
   makeCache: Options.cacheWithLimits({
     // Note: you can specify all managers here, but keep in mind that all managers work differently
     // Here, we try to cache minimum number of members from each guild instead of 100s (default)
+    MessageManager: 100,
     GuildForumThreadManager: 1,
     GuildMemberManager: {
-      maxSize: 10,
+      maxSize: 1,
       keepOverLimit: member => member.id === client.user.id
     },
     GuildTextThreadManager: 1,
-    ThreadManager: 5, // switch to 10 if the manager doesn't work
+    ThreadManager: 1, // switch to 10 if the manager doesn't work
     ThreadMemberManager: 0 // set to 10 if you want thread members to be cached
   }),
   presence: {
