@@ -35,4 +35,4 @@ On Add:
 * i.e. setting any manager's `maxSize` to 0 would result in failure of the respective manager
 * Also remember, it doesn't matter what intents you'e chosen, if your bot recieves some data that can be cached, it will be cached, so you must assume and set a proper cache accordingly
 * Below managers are not customisable as most of them belong to the client itself and hence will break functionality
-<img src=''/>
+<img src='https://media.discordapp.net/attachments/1059827793661280329/1060235771723911228/Screenshot_2023-01-04-22-08-02-35_40deb401b9ffe8e1df2f1cc5ba480b12.jpg'/>
