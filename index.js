@@ -20,17 +20,22 @@ const client = new Client({
   // https://discord.js.org/#/docs/discord.js/main/typedef/ClientOptions
   // https://discord.js.org/#/docs/discord.js/main/class/Options?scrollTo=s-cacheWithLimits
   makeCache: Options.cacheWithLimits({
-    // Note: you can specify all managers here, but keep in mind that all managers work differently
-    // Here, we try to cache minimum number of members from each guild instead of 100s (default)
     MessageManager: 100,
     GuildForumThreadManager: 1,
+    /*
+    Each manager creates its own collection, collection is just an upgraded version of js map
+    The bot uses it to store data and hence avoids calling discord for help all time by accessing the data required from the cache instead, aka it also prevents getting rate limited to an extent
+    Here, we reduce the number of members we cache from each guild as we rarely need it
+    Same for threads and forums
+    Read in more detail from README.md
+    */
     GuildMemberManager: {
-      maxSize: 1,
-      keepOverLimit: member => member.id === client.user.id
+      maxSize: 1, // size of the collection of this manager 
+      keepOverLimit: member => member.user.id === client.user.id // condition, if true, the member is allowed to stay beyond the limit (aka max size)
     },
     GuildTextThreadManager: 1,
-    ThreadManager: 1, // switch to 10 if the manager doesn't work
-    ThreadMemberManager: 0 // set to 10 if you want thread members to be cached
+    ThreadManager: 1,
+    ThreadMemberManager: 0
   }),
   presence: {
     status: 'idle',
