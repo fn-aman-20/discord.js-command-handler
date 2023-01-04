@@ -12,7 +12,7 @@ const {
 fs = require('fs');
 
 const client = new Client({
-  /* uses all intents, restricting these to few is highly recommended so as to consume less memory */
+  /* uses all intents for development purposes by default, restricting these to few is highly recommended so as to consume less memory */
   intents: Object.values(GatewayIntentBits)
     .filter(perm => typeof perm === 'number'),
   shards: 'auto',
